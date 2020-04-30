@@ -20,7 +20,6 @@ export class PostTableComponent implements OnInit {
   ngOnInit(): void {
     
     // this.querySub = this.route.queryParams.subscribe(params => {
-    //   console.log("params -> ", params);
     //   if(params['tag']){
     //     this.tag = params['tag'];
     //     this.category = null;
@@ -41,7 +40,7 @@ export class PostTableComponent implements OnInit {
 
 
 
-getAllMyPosts(){console.log("GET ALL MY POSTS");
+getAllMyPosts(){
   this.data.getAllPosts().subscribe(data =>{
     if(data.length > 0){
       this.blogPosts = data;
@@ -49,7 +48,6 @@ getAllMyPosts(){console.log("GET ALL MY POSTS");
   });
 }
 rowClicked(e, id){
-  console.log("clicked rowClicked()");
   this.route.navigate(['admin/post', id]);
 }
 
