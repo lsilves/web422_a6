@@ -35,14 +35,11 @@ export class PostDataComponent implements OnInit {
   constructor(private route: ActivatedRoute, private data: PostService) { }
 
   ngOnInit(): void {
-    //console.log("THIS IS THE AMOUNT OF VIEWS: ", this.post.views);
 
     this.querySub = this.data.getPostbyId(this.route.snapshot.params['id']).subscribe(data => {this.post = data; this.post.views = this.post.views + 1; this.data.updatePostById(this.post._id, this.post).subscribe();});
     //this.post.views = this.post.views + 1;
    // this.data.updatePostById(this.post._id, this.post).subscribe(); 
    // this.querySub = this.data.getPostbyId(this.route.snapshot.params['id']).subscribe(data => {this.post = data;});
-
-    //console.log("THIS IS THE AMOUNT OF VIEWS: ", this.post.views);
   } 
 
   ngOnDestroy(){
@@ -55,7 +52,7 @@ export class PostDataComponent implements OnInit {
     // this.querySub = this.data.newPost(this.blogPost).subscribe(data => {this.blogPost = data; this.tags = data.tags; });
     // this.router.navigate(['admin']);
     let myComment = [{ author: this.commentName, comment: this.commentText, date: new Date().toLocaleDateString()}];
-console.log("test - comments.type:", myComment);
+
     this.post.comments.push({ author: this.commentName, comment: this.commentText, date: new Date().toLocaleDateString()});
     this.commentSub = this.data.updatePostById(this.post._id, this.post).subscribe(data => { this.post = data; });
     //this.post.comments.push
